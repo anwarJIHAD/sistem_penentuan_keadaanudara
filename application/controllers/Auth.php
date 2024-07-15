@@ -11,13 +11,16 @@ class auth extends CI_Controller
 	{
 		log_message('debug', 'C_Dashboard index method called');
 		if ($this->session->userdata('is_login')) {
-			redirect('Dashboard');
+			redirect('C_Dashboard_user');
 		}
-		$this->form_validation->set_rules('username', 'username', 'trim|required', [
-			'required' => 'username Wajib di isi'
+		$this->form_validation->set_rules('email', 'email', 'trim|required', [
+			'required' => 'email Wajib di isi'
 		]);
 		$this->form_validation->set_rules('password', 'password', 'trim|required', [
-			'required' => 'Password Wajib di isi'
+			'required' => 'password Wajib di isi'
+		]);
+		$this->form_validation->set_rules('unit', 'unit', 'trim|required', [
+			'required' => 'unit Wajib di isi'
 		]);
 		if ($this->form_validation->run() == false) {
 			$this->load->view("pages/auth/login");
@@ -79,33 +82,38 @@ class auth extends CI_Controller
 
 	public function cek_login()
 	{
-		$username = $this->input->post('username');
+		$email = $this->input->post('email');
 		$password = $this->input->post('password');
-		$user = $this->db->get_where('user', ['username' => $username])->row_array();
+		$unit = $this->input->post('unit');
+		$user = $this->db->get_where('user', ['email' => $email])->row_array();
+
 		if ($user) {
 			if (password_verify($password, $user['password'])) {
-				if ($user['role'] == 'admin') {
+				if ($user['id_alat'] == $unit) {
 					if ($user['status'] == '1') {
 						$data = [
 							'is_member' => 1,
 							'is_login' => true,
 							'login_type' => 'admin',
+							'nama_komunitas' => $user['nama_komunitas'],
 							'data_login' => [
-								'username' => $user->username,
+								'id_alat' => $user->id_alat,
 								'id_user' => $user->id_user,
 								'email' => $user->email,
-								'role' => $user->role,
+								'nama_komunitas' => $user['nama_komunitas'],
 							]
 						];
 						$this->session->set_userdata($data);
-						redirect('dashboard_admin');
+						redirect('C_Dashboard_user');
 					} else {
 						$this->session->set_flashdata('message', '<div class="alert alert-danger" role="elert">
                     Akun Tidak Aktif</div>');
 						redirect('auth');
 					}
 				} else {
-
+					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="elert">
+                    Unit alat tidak ditemukan</div>');
+					redirect('auth');
 				}
 			} else {
 				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="elert">

@@ -14,7 +14,21 @@ class User_model extends CI_Model
 		$this->db->from($this->table);
 		$this->db->order_by('date_create', 'desc');
 		$query = $this->db->get();
+
 		return $query->result_array();
+	}
+	public function getById($id)
+	{
+		$this->db->from($this->table);
+		$this->db->where('id_user', $id);
+		$this->db->order_by('date_create', 'desc');
+		$query = $this->db->get();
+		return $query->row_array();
+	}
+	public function update($where, $data)
+	{
+		$this->db->update($this->table, $data, $where);
+		return $this->db->affected_rows();
 	}
 	public function getById_()
 	{
@@ -27,50 +41,21 @@ class User_model extends CI_Model
 		$query = $this->db->get();
 		return $query->result_array();
 	}
-	public function getByberkas()
+	function fetch_data($query)
 	{
-		$this->db->select('a.*, u.*, COUNT(b.NIP) as jumlah_berkas');
-		$this->db->from('akses a');
-		$this->db->join('user u', 'a.NIP = u.NIP');
-		$this->db->join('pangkat b', 'u.NIP = b.NIP', 'left'); // Asumsi 'berkas' memiliki kolom 'NIP' dan 'id' adalah primary key dari 'berkas'
-		$this->db->where('u.status_user2', 'aktif');
-		$this->db->group_by('u.NIP'); // Grup berdasarkan NIP untuk menghitung jumlah berkas per pegawai
-		$this->db->order_by('u.date_create', 'desc');
-
-		$query = $this->db->get();
-		return $query->result_array();
-	}
-	public function getByNon()
-	{
-		$this->db->select('a.*,u.*');
-		$this->db->from('akses a');
-		$this->db->join('user u', 'a.NIP = u.NIP');
-		$this->db->where('u.status_user2', 'Non-Aktif');
-		$this->db->order_by('u.date_create', 'desc'); // Mengurutkan hasil berdasarkan kolom 'tanggal' secara ascending
-
-		$query = $this->db->get();
-		return $query->result_array();
-	}
-	public function getBy()
-	{
+		$this->db->select("*");
 		$this->db->from($this->table);
-		$this->db->where('NIP', $this->session->userdata('NIP'));
-		$this->db->order_by('date_create', 'desc');
-		$query = $this->db->get();
-		return $query->row_array();
-	}
-	public function update($where, $data)
-	{
-		$this->db->update($this->table, $data, $where);
-		return $this->db->affected_rows();
-	}
-	public function getById($NIP)
-	{
-		$this->db->from($this->table);
-		$this->db->where('NIP', $NIP);
-		$this->db->order_by('date_create', 'desc');
-		$query = $this->db->get();
-		return $query->row_array();
+		if ($query != '') {
+			$this->db->like('email', $query);
+			$this->db->or_like('nama_komunitas', $query);
+			$this->db->or_like('id_alat', $query);
+			$this->db->or_like('password', $query);
+
+		}
+		$this->db->order_by('nama_komunitas', 'DESC');
+		return $this->db->get();
+
+
 	}
 	public function insert($data)
 	{
