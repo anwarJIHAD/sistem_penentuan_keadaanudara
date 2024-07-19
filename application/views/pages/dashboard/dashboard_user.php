@@ -35,10 +35,10 @@
 						<div class="avatar me-2">
 							<span class="avatar-initial rounded bg-label-primary"><i class="bx bxs-truck"></i></span>
 						</div>
-						<h5 class="ms-1 mb-0">Rata - Rata PM 2.5</h5>
+						<h5 class="ms-1 mb-0">PM25 Tertinggi</h5>
 					</div>
 					<div class="d-flex justify-content-center">
-						<h2 class="mb-0">25</h2>
+						<h2 class="mb-0 text-danger">Pekanbaru</h2>
 					</div>
 
 				</div>
@@ -49,7 +49,7 @@
 				<div class="card-body">
 					<div class="d-flex align-items-center mb-2 pb-1">
 						<div class="avatar me-2">
-							<span class="avatar-initial rounded bg-label-warning"><i class="bx bx-error"></i></span>
+							<span class="avatar-initial rounded bg-label-warning"><i class="bx bx-time-five"></i></span>
 						</div>
 						<h5 class="ms-1 mb-0">Jumlah Rute</h5>
 					</div>
@@ -84,14 +84,14 @@
 				<div class="card-body">
 					<div class="d-flex align-items-center mb-2 pb-1">
 						<div class="avatar me-2">
-							<span class="avatar-initial rounded bg-label-info"><i class="bx bx-time-five"></i></span>
+							<span class="avatar-initial rounded bg-label-danger"><i class="bx bx-error"></i></span>
 						</div>
 						<h5 class="ms-1 mb-0">
-							Keadaan Udara</h5>
+							Lokasi Paling Tercemar</h5>
 					</div>
 					<div class="d-flex justify-content-center">
-						<h2 class="mb-0">80</h2>
-						<small class="text-muted">Km</small>
+						<h2 class="mb-0">Rumbai</h2>
+						<small class="text-danger"> Km</small>
 
 					</div>
 				</div>
@@ -114,18 +114,20 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-12 col-lg-8 mb-4">
+		<div class="col-md-12 col-lg-12 mb-4">
 			<div class="card">
 				<div class="row row-bordered g-0">
 					<div class="col-md-12">
 						<div class="card-header">
 							<h5 class="card-title mb-0">Rata Rata Perbulan</h5>
-							<small class="card-subtitle">Yearly report overview</small>
-							<div class="dropdown">
-								<div class="input-group">
-									<select style="width:20%;" id="search_transaksipelapak" name="keyword"
-										class="form-control" value="<?= set_value('keyword'); ?>">
+							<small class="card-subtitle">Keadaan Udara</small>
+							<div class="d-flex justify-content-center">
+								<div class="col col-sm-6 col-md-6 col-lg-6 p-2 p-2">
+									<label for="tahun" class="form-label">Tahun</label>
+									<select id="search_transaksipelapak" name="keyword" class="form-control"
+										value="<?= set_value('keyword'); ?>">
 										<option class='text-center dropdown-toggle' value="">Semua
+											Tahun
 										</option>
 										<?php foreach ($tahun as $p): ?>
 											<option value="<?= $p; ?>">
@@ -135,8 +137,24 @@
 
 									</select>
 								</div>
+								<div class="col col-sm-6 col-md-6 col-lg-6 p-2 p-2">
+									<label for="tahun" class="form-label">Wilayah</label>
+									<select id="search_transaksipelapak" name="keyword" class="form-control"
+										value="<?= set_value('keyword'); ?>">
+										<option class='text-center dropdown-toggle' value="">
+											Rata-Rata Seluruh Wilayah
+										</option>
+										<?php foreach ($wilayah_sample as $p): ?>
+											<option value="<?= $p; ?>">
+												<?= $p; ?>
+											</option>
+										<?php endforeach; ?>>
+
+									</select>
+								</div>
 
 							</div>
+
 						</div>
 						<div class="card-body">
 							<div id="totalIncomeChart1"></div>
@@ -146,52 +164,63 @@
 			</div>
 			<!--/ Total Income -->
 		</div>
-		<div class="col-xl-4 col-lg-4 col-12 mb-4">
+		<div class="col-xl-12 col-lg-12 col-12 mb-4">
 			<div class="card">
-				<div class="card-header header-elements">
-					<h5 class="card-title mb-0">Rata Rata Harian</h5>
-					<div class="card-action-element ms-auto py-0">
-						<div class="dropdown">
-							<button type="button" class="btn dropdown-toggle px-0" data-bs-toggle="dropdown"
-								aria-expanded="false">
-								<i class="bx bx-calendar"></i>
-							</button>
-							<ul class="dropdown-menu dropdown-menu-end">
-								<li>
-									<a href="javascript:void(0);"
-										class="dropdown-item d-flex align-items-center">Today</a>
-								</li>
-								<li>
-									<a href="javascript:void(0);"
-										class="dropdown-item d-flex align-items-center">Yesterday</a>
-								</li>
-								<li>
-									<a href="javascript:void(0);" class="dropdown-item d-flex align-items-center">Last 7
-										Days</a>
-								</li>
-								<li>
-									<a href="javascript:void(0);" class="dropdown-item d-flex align-items-center">Last
-										30
-										Days</a>
-								</li>
-								<li>
-									<hr class="dropdown-divider" />
-								</li>
-								<li>
-									<a href="javascript:void(0);"
-										class="dropdown-item d-flex align-items-center">Current
-										Month</a>
-								</li>
-								<li>
-									<a href="javascript:void(0);" class="dropdown-item d-flex align-items-center">Last
-										Month</a>
-								</li>
-							</ul>
+				<div class="col-md-12">
+					<div class="card-header">
+						<h5 class="card-title mb-0">Rata Rata Harian</h5>
+						<small class="card-subtitle">Keadaan Udara</small>
+						<div class="d-flex justify-content-center">
+							<div class="col col-sm-3 col-md-3 col-lg-3 p-2 p-3">
+								<label for="tahun" class="form-label">Tahun</label>
+								<select id="search_transaksipelapak" name="keyword" class="form-control"
+									value="<?= set_value('keyword'); ?>">
+									<option class='text-center dropdown-toggle' value="">Semua Tahun
+									</option>
+									<?php foreach ($tahun as $p): ?>
+										<option value="<?= $p; ?>">
+											<?= $p; ?>
+										</option>
+									<?php endforeach; ?>>
+
+								</select>
+							</div>
+							<div class="col col-sm-3 col-md-3 col-lg-3 p-2 p-3">
+								<label for="bulan" class="form-label">Bulan</label>
+								<select id="search_transaksipelapak" name="keyword" class="form-control"
+									value="<?= set_value('keyword'); ?>">
+									<option class='text-center dropdown-toggle' value="">Rata-Rata
+										Seluruh Bulan
+									</option>
+									<?php foreach ($bulan as $p): ?>
+										<option value="<?= $p; ?>">
+											<?= $p; ?>
+										</option>
+									<?php endforeach; ?>
+								</select>
+							</div>
+							<div class="col col-sm-3 col-md-3 col-lg-3 p-2 p-3">
+								<label for="tahun" class="form-label">Wilayah</label>
+								<select id="search_transaksipelapak" name="keyword" class="form-control"
+									value="<?= set_value('keyword'); ?>">
+									<option class='text-center dropdown-toggle' value="">Rata-Rata
+										Seluruh Wilayah
+									</option>
+									<?php foreach ($wilayah_sample as $p): ?>
+										<option value="<?= $p; ?>">
+											<?= $p; ?>
+										</option>
+									<?php endforeach; ?>>
+
+								</select>
+							</div>
+
 						</div>
 					</div>
-				</div>
-				<div class="card-body">
-					<canvas id="barChart" class="chartjs" data-height="270"></canvas>
+
+					<div class="card-body">
+						<canvas id="barChart" class="chartjs" data-height="270"></canvas>
+					</div>
 				</div>
 			</div>
 		</div>

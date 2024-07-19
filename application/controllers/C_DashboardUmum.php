@@ -16,14 +16,29 @@ class C_DashboardUmum extends CI_Controller
 
 	public function index()
 	{
+		$bulan = array(
+			"Januari",
+			"Februari",
+			"Maret",
+			"April",
+			"Mei",
+			"Juni",
+			"Juli",
+			"Agustus",
+			"September",
+			"Oktober",
+			"November",
+			"Desember"
+		);
+		$tahun_sekarang = date('Y');
+		$tahun_range = range($tahun_sekarang, $tahun_sekarang - 20, -1);
+		$data['tahun'] = $tahun_range;
+		$data['bulan'] = $bulan;
+		$data['wilayah_sample'] = ['indonesia'];
 		$data['judul'] = "Halaman Dashboard";
 		// $this->load->view('pages/layout/header', $data);
-		$this->load->view('pages/Dashboard', $data);
+		$this->load->view('pages/dashboard', $data);
 		// $this->load->view('pages/layout/footer', $data);
 	}
-	public function coba()
-	{
-		$this->load->view('pages/Dashboardcoba');
 
-	}
 }

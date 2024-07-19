@@ -23,7 +23,7 @@ class auth extends CI_Controller
 			'required' => 'unit Wajib di isi'
 		]);
 		if ($this->form_validation->run() == false) {
-			$this->load->view("pages/auth/login");
+			$this->load->view("pages/Auth/login");
 		} else {
 			$this->cek_login();
 		}
@@ -89,35 +89,35 @@ class auth extends CI_Controller
 
 		if ($user) {
 			if (password_verify($password, $user['password'])) {
-				if ($user['id_alat'] == $unit) {
-					if ($user['status'] == '1') {
-						$data = [
-							'is_member' => 1,
-							'is_login' => true,
-							'login_type' => 'admin',
+			if ($user['id_alat'] == $unit) {
+				if ($user['status'] == '1') {
+					$data = [
+						'is_member' => 1,
+						'is_login' => true,
+						'login_type' => 'admin',
+						'nama_komunitas' => $user['nama_komunitas'],
+						'data_login' => [
+							'id_alat' => $user->id_alat,
+							'id_user' => $user->id_user,
+							'email' => $user->email,
 							'nama_komunitas' => $user['nama_komunitas'],
-							'data_login' => [
-								'id_alat' => $user->id_alat,
-								'id_user' => $user->id_user,
-								'email' => $user->email,
-								'nama_komunitas' => $user['nama_komunitas'],
-							]
-						];
-						$this->session->set_userdata($data);
-						redirect('C_Dashboard_user');
-					} else {
-						$this->session->set_flashdata('message', '<div class="alert alert-danger" role="elert">
-                    Akun Tidak Aktif</div>');
-						redirect('auth');
-					}
+						]
+					];
+					$this->session->set_userdata($data);
+					redirect('C_Dashboard_user');
 				} else {
 					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="elert">
-                    Unit alat tidak ditemukan</div>');
+                    Akun Tidak Aktif</div>');
 					redirect('auth');
 				}
 			} else {
 				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="elert">
-            Password Salah!</div>');
+                    Unit alat tidak ditemukan</div>');
+				redirect('auth');
+			}
+			} else {
+				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="elert">
+			Password Salah!</div>');
 				redirect('auth');
 			}
 		} else {

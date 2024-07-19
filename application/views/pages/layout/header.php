@@ -67,8 +67,14 @@
 		}
 
 		.layout-navbar {
-			background: rgb(0, 255, 242);
+			background-color: #A5D6A7 !important;
+			/* background: rgb(0, 255, 242);
 			background: linear-gradient(0deg, rgba(0, 255, 242, 1) 19%, rgba(132, 245, 238, 1) 52%, rgba(154, 231, 247, 1) 93%) !important;
+			*/
+		}
+
+		.menus {
+			background-color: #A5D6A7 !important;
 		}
 	</style>
 	<link rel="stylesheet" href="../../assets/vendor/css/pages/app-logistics-fleet.css" />
@@ -146,14 +152,16 @@
 		<div class="layout-container">
 			<!-- Menu -->
 
-			<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
-				<div class="app-brand demo">
+			<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme ">
+				<div class="app-brand menus">
 					<a href="index.html" class="app-brand-link">
 						<span class="app-brand-logo demo">
-							<img src="<?= base_url('assets/template/') ?>assets\img\icons\brands\safari.png" alt="Logo"
-								width="30" />
+							<!-- <img src="<?= base_url('assets/template/') ?>assets\img\icons\brands\safari.png" alt="Logo"
+								width="30" /> -->
+							<img src="<?= base_url('assets/template/') ?>assets\img\logo\logo_strata_png.png" alt="Logo"
+								width="200" />
 						</span>
-						<span class="app-brand-text demo menu-text fw-bold ms-2">SycleS 2.5</span>
+						<!-- <span class="app-brand-text demo menu-text fw-bold ms-2">SycleS 2.5</span> -->
 					</a>
 
 					<a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
@@ -163,7 +171,7 @@
 
 				<div class="menu-inner-shadow"></div>
 
-				<ul class="menu-inner py-1">
+				<ul class="menu-inner py-1 menus">
 					<li class="menu-item">
 						<a href="<?= base_url('C_Dashboard_user') ?>" class="menu-link">
 							<i class="menu-icon tf-icons bx bx-home-circle"></i>
@@ -198,7 +206,7 @@
 				<!-- Navbar -->
 
 				<nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
-					id="layout-navbar">
+					id="layout-navbar" style="background-color:red;">
 					<div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
 						<a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
 							<i class="bx bx-menu bx-sm"></i>
@@ -239,7 +247,9 @@
 													</div>
 												</div>
 												<div class="flex-grow-1">
-													<h6 class="mb-0"><?php echo $this->session->userdata('nama_komunitas'); ?></h6>
+													<h6 class="mb-0">
+														<?php echo $this->session->userdata('nama_komunitas'); ?>
+													</h6>
 													<small class="text-muted">Admin</small>
 												</div>
 											</div>

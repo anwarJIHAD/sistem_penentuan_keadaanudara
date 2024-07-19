@@ -379,7 +379,7 @@
     expensesRadialChart.render();
   }
 
-  // Total Income - Area Chart
+  // Chart Perbulan - dashboard utama
   // --------------------------------------------------------------------
   const totalIncomeEl = document.querySelector('#totalIncomeChart1'),
     totalIncomeConfig = {
@@ -398,7 +398,8 @@
       },
       series: [
         {
-          data: [3350, 3350, 4800, 4800, 2950, 2950, 1800, 1800, 3750, 3750, 5700, 5700]
+					name: 'Rata-Rata PM25',
+          data: [2.275, 3.45, 3.21, 4.89, 2.86, 4.89, 7.54, 4.67, 2.82, 1.76, 7.87, 5.82]
         }
       ],
       dataLabels: {
@@ -452,15 +453,15 @@
         labels: {
           offsetX: -15,
           formatter: function (val) {
-            return '$' + parseInt(val / 1000) + 'k';
+            return val;
           },
           style: {
             fontSize: '13px',
             colors: labelColor
           }
         },
-        min: 1000,
-        max: 6000,
+        min: 1,
+        max: 10,
         tickAmount: 5
       }
     };
