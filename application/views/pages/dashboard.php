@@ -230,7 +230,7 @@
 												<div class="d-flex justify-content-center">
 													<div class="col col-sm-6 col-md-6 col-lg-6 p-2 p-2">
 														<label for="tahun" class="form-label">Tahun</label>
-														<select id="search_transaksipelapak" name="keyword"
+														<select id="search_tahunA" name="keyword"
 															class="form-control" value="<?= set_value('keyword'); ?>">
 															<option class='text-center dropdown-toggle' value="">Semua
 																Tahun
@@ -245,14 +245,14 @@
 													</div>
 													<div class="col col-sm-6 col-md-6 col-lg-6 p-2 p-2">
 														<label for="tahun" class="form-label">Wilayah</label>
-														<select id="search_transaksipelapak" name="keyword"
+														<select id="search_wilayahA" name="keyword"
 															class="form-control" value="<?= set_value('keyword'); ?>">
 															<option class='text-center dropdown-toggle' value="">
 																Rata-Rata Seluruh Wilayah
 															</option>
-															<?php foreach ($wilayah_sample as $p): ?>
-																<option value="<?= $p; ?>">
-																	<?= $p; ?>
+															<?php foreach ($wilayah as $p): ?>
+																<option value="<?= $p['id_wilayah']; ?>">
+																	<?= $p['nama_wilayah']; ?>
 																</option>
 															<?php endforeach; ?>>
 
@@ -262,8 +262,10 @@
 												</div>
 
 											</div>
-											<div class="card-body">
-												<div id="totalIncomeChart1"></div>
+											<div class="card-body chartbulan">
+												<!-- <div id="totalIncomeChart1"></div> -->
+												<canvas id="du_bulan" class="chartjs" data-height="270"></canvas>
+
 											</div>
 										</div>
 									</div>
@@ -312,10 +314,10 @@
 														<option class='text-center dropdown-toggle' value="">Rata-Rata
 															Seluruh Wilayah
 														</option>
-														<?php foreach ($wilayah_sample as $p): ?>
-															<option value="<?= $p; ?>">
-																<?= $p; ?>
-															</option>
+														<?php foreach ($wilayah as $p): ?>
+															<option value="<?= $p['id_wilayah']; ?>">
+																	<?= $p['nama_wilayah']; ?>
+																</option>
 														<?php endforeach; ?>>
 
 													</select>
@@ -324,8 +326,8 @@
 											</div>
 										</div>
 
-										<div class="card-body">
-											<canvas id="barChart" class="chartjs" data-height="270"></canvas>
+										<div class="card-body charthari">
+											<canvas id="du_hari" class="chartjs" data-height="270"></canvas>
 										</div>
 									</div>
 								</div>
