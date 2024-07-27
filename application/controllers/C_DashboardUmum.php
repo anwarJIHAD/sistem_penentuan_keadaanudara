@@ -15,22 +15,29 @@ class C_DashboardUmum extends CI_Controller
 		//     AD
 		// ));
 	}
+	public function datamap()
+	{
+		$data = $this->Dashboard_model->datamap();
+		// var_dump($data);
+		// die;
+		echo json_encode($data);
+	}
 
 	public function index()
 	{
 		$bulan = array(
-			"Januari",
-			"Februari",
-			"Maret",
-			"April",
-			"Mei",
-			"Juni",
-			"Juli",
-			"Agustus",
-			"September",
-			"Oktober",
-			"November",
-			"Desember"
+			"1" => "Januari",
+			"2" => "Februari",
+			"3" => "Maret",
+			"4" => "April",
+			"5" => "Mei",
+			"6" => "Juni",
+			"7" => "Juli",
+			"8" => "Agustus",
+			"9" => "September",
+			"10" => "Oktober",
+			"11" => "November",
+			"12" => "Desember"
 		);
 		$tahun_sekarang = date('Y');
 		$tahun_range = range($tahun_sekarang, $tahun_sekarang - 20, -1);
@@ -120,8 +127,21 @@ class C_DashboardUmum extends CI_Controller
 		}
 
 		try {
-			// Panggil fungsi model dengan semua argumen yang diperlukan
-			$data = $this->Dashboard_model->getbyhari($latitude, $longitude, $tahun, $bulan);
+			// Tentukan jumlah hari dalam bulan berdasarkan bulan yang dipilih
+			if ($bulan == '') {
+				$jumlahHari = '31';
+			} else {
+				if ($tahun == '') {
+					$jumlahHari = '31';
+				} else {
+					$jumlahHari = date('t', strtotime($tahun . '-' . $bulan . '-01'));
+				}
+			}
+
+			for ($i = 1; $i <= $jumlahHari; $i++) {
+				$hari = $this->Dashboard_model->getbyhari($latitude, $longitude, $tahun, $bulan, str_pad($i, 2, '0', STR_PAD_LEFT));
+				$data['hari_' . $i] = $hari;
+			}
 
 			// Kirim data dalam format JSON
 			header('Content-Type: application/json');

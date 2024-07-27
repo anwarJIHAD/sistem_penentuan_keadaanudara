@@ -62,8 +62,17 @@
 	<script src="<?= base_url('assets/template/') ?>assets/js/config.js"></script>
 	<style>
 		#map {
-			height: 250px;
+			height: 500px;
 			width: 100%;
+		}
+		
+
+		.marker {
+			background-color: #FF0000;
+			border-radius: 50%;
+			width: 10px;
+			height: 10px;
+			cursor: pointer;
 		}
 
 		.layout-navbar {
