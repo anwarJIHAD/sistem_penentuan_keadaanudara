@@ -15,6 +15,7 @@
 
 	<!-- Favicon -->
 	<link rel="icon" type="image/x-icon" href="<?= base_url('assets/template/') ?>assets/img/favicon/favicon.ico" />
+	<link rel="icon" type="image/x-icon" href="<?= base_url('assets/template/') ?>assets\img\logo\logo_strata_png.png" />
 
 	<!-- Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -48,24 +49,21 @@
 		href="<?= base_url('assets/template/') ?>assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css" />
 
 	<!-- Page CSS -->
-	<link rel="stylesheet" href="../../assets/vendor/css/pages/app-logistics-fleet.css" />
+	<link rel="stylesheet" href="<?= base_url('assets/template/') ?>assets/vendor/css/pages/app-logistics-fleet.css" />
 
 	<link rel="stylesheet"
 		href="<?= base_url('assets/template/') ?>assets/vendor/css/pages/app-logistics-dashboard.css" />
 
 	<!-- Helpers -->
 	<script src="<?= base_url('assets/template/') ?>assets/vendor/js/helpers.js"></script>
-	<!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-	<!--? Template customizer: To hide customizer set displayCustomizer value false in config.js.  -->
-	<!-- <script src="<?= base_url('assets/template/') ?>assets/vendor/js/template-customizer.js"></script> -->
-	<!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+	<link rel="stylesheet" href="<?= base_url('assets/template/') ?>assets/vendor/libs/flatpickr/flatpickr.css" />
 	<script src="<?= base_url('assets/template/') ?>assets/js/config.js"></script>
 	<style>
 		#map {
 			height: 500px;
 			width: 100%;
 		}
-		
+
 
 		.marker {
 			background-color: #FF0000;
@@ -86,7 +84,7 @@
 			background-color: #A5D6A7 !important;
 		}
 	</style>
-	<link rel="stylesheet" href="../../assets/vendor/css/pages/app-logistics-fleet.css" />
+	<link rel="stylesheet" href="<?= base_url('assets/template/') ?>assets/vendor/css/pages/app-logistics-fleet.css" />
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script src="https://code.jquery.com/jquery-3.7.1.js"
 		integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>

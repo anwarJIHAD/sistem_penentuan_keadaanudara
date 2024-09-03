@@ -13,7 +13,7 @@
 	<meta name="description" content="" />
 
 	<!-- Favicon -->
-	<link rel="icon" type="image/x-icon" href="<?= base_url('assets/template/') ?>assets/img/favicon/favicon.ico" />
+	<link rel="icon" type="image/x-icon" href="<?= base_url('assets/template/') ?>assets\img\logo\logo_strata_png.png" />
 
 	<!-- Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -256,7 +256,7 @@
 														<select id="search_wilayahA" name="keyword" class="form-control"
 															value="<?= set_value('keyword'); ?>">
 															<option class='text-center dropdown-toggle' value="">
-																Rata-Rata Seluruh Wilayah
+																Rata Rata Perlokasi
 															</option>
 															<?php foreach ($wilayah as $p): ?>
 																<option value="<?= $p['id_wilayah']; ?>">
@@ -270,7 +270,28 @@
 												</div>
 
 											</div>
+											<div class="alert alert-white" style="100%">
+												<p>Keterangan:</p>
+												<div class="d-flex justify-content-center text-center">
+													<div style="background-color: #28dac6; color: white; width: 20%;">
+														Baik
+													</div>
+													<div style="background-color: blue; color: white; width: 20%;">
+														Sedang
+													</div>
+													<div style="background-color: yellow; color: black; width: 20%;">
+														Tidak
+														Sehat</div>
+													<div style="background-color: red; color: white; width: 20%;">Sangat
+														Tidak
+														Sehat</div>
+													<div style="background-color: black; color: white; width: 20%;">
+														Berbahaya
+													</div>
+												</div>
+											</div>
 											<div class="card-body chartbulan">
+
 												<!-- <div id="totalIncomeChart1"></div> -->
 												<canvas id="du_bulan" class="chartjs" data-height="270"></canvas>
 
@@ -319,8 +340,8 @@
 													<label for="tahun" class="form-label">Wilayah</label>
 													<select id="search_wilayahH" name="keyword" class="form-control"
 														value="<?= set_value('keyword'); ?>">
-														<option class='text-center dropdown-toggle' value="">Rata-Rata
-															Seluruh Wilayah
+														<option class='text-center dropdown-toggle' value="">Rata Rata
+															Perlokasi
 														</option>
 														<?php foreach ($wilayah as $p): ?>
 															<option value="<?= $p['id_wilayah']; ?>">
@@ -333,7 +354,23 @@
 
 											</div>
 										</div>
-
+										<div class="alert alert-white" style="100%">
+											<p>Keterangan:</p>
+											<div class="d-flex justify-content-center text-center">
+												<div style="background-color: #28dac6; color: white; width: 20%;">Baik
+												</div>
+												<div style="background-color: blue; color: white; width: 20%;">Sedang
+												</div>
+												<div style="background-color: yellow; color: black; width: 20%;">Tidak
+													Sehat</div>
+												<div style="background-color: red; color: white; width: 20%;">Sangat
+													Tidak
+													Sehat</div>
+												<div style="background-color: black; color: white; width: 20%;">
+													Berbahaya
+												</div>
+											</div>
+										</div>
 										<div class="card-body charthari">
 											<canvas id="du_hari" class="chartjs" data-height="270"></canvas>
 										</div>
@@ -371,7 +408,7 @@
 														<select id="search_wilayahWilayah" name="keyword"
 															class="form-control" value="<?= set_value('keyword'); ?>">
 															<option class='text-center dropdown-toggle' value="">
-																Rata-Rata Seluruh Wilayah
+																Rata Rata Perlokasi
 															</option>
 															<?php foreach ($wilayah as $p): ?>
 																<option value="<?= $p['id_wilayah']; ?>">
@@ -434,8 +471,8 @@
 													<label for="tahun" class="form-label">Wilayah</label>
 													<select id="search_wilayahTemperatureH" name="keyword"
 														class="form-control" value="<?= set_value('keyword'); ?>">
-														<option class='text-center dropdown-toggle' value="">Rata-Rata
-															Seluruh Wilayah
+														<option class='text-center dropdown-toggle' value="">Rata Rata
+															Perlokasi
 														</option>
 														<?php foreach ($wilayah as $p): ?>
 															<option value="<?= $p['id_wilayah']; ?>">
@@ -579,10 +616,29 @@
 						if (Math.abs(e.lngLat.lng - longitude) < tolerance && Math.abs(e.lngLat.lat - latitude) < tolerance) {
 							const pm25 = parseFloat(item.pm25).toFixed(2);
 							found = true;
+							let statusKesehatan = '';
+							let warnaStatus = '';
+
+							if (pm25 <= 50) {
+								statusKesehatan = 'Baik';
+								warnaStatus = '#28dac6';
+							} else if (pm25 <= 100) {
+								statusKesehatan = 'Sedang';
+								warnaStatus = 'blue';
+							} else if (pm25 <= 200) {
+								statusKesehatan = 'Tidak Sehat';
+								warnaStatus = 'yellow';
+							} else if (pm25 <= 300) {
+								statusKesehatan = 'Sangat Tidak Sehat';
+								warnaStatus = 'blue';
+							} else {
+								statusKesehatan = 'Berbahaya';
+								warnaStatus = 'red';
+							}
 
 							new mapboxgl.Popup({ offset: 25 })
 								.setLngLat([longitude, latitude])
-								.setHTML(`<h3 style="font-family: 'Montserrat', sans-serif; color: blue;">Informasi</h3><p style="font-family: 'Montserrat', sans-serif; color: black;">nama wilayah : ${item.nama_wilayah}</p><p style="font-family: 'Montserrat', sans-serif; color: black;"> [${longitude}, ${latitude}]</p><p style="font-family: 'Montserrat', sans-serif; color: black;">Nilai PM25 : ${pm25}</p><p style="font-family: 'Montserrat', sans-serif; color: black;">Tanggal Update : ${item.datetime}</p><p style="font-family: 'Montserrat', sans-serif; color: black;">Temperature : ${item.temperature}</p><p style="font-family: 'Montserrat', sans-serif; color: black;">Humidity : ${item.humidity}</p><p style="font-family: 'Montserrat', sans-serif; color: black;">Pressure : ${item.pressure}</p><p style="font-family: 'Montserrat', sans-serif; color: black;">Lux : ${item.lux}</p>`)
+								.setHTML(`<h3 style="font-family: 'Montserrat', sans-serif; color: blue">Informasi</h3><p style="font-family: 'Montserrat', sans-serif; color: black;">nama wilayah : ${item.nama_wilayah}</p><p style="font-family: 'Montserrat', sans-serif; color: black;"> [${longitude}, ${latitude}]</p><p style="font-family: 'Montserrat', sans-serif; color: black;">Nilai PM25 : ${pm25}</p><p style="font-family: 'Montserrat', sans-serif; color: ${warnaStatus};">Status Kesehatan : ${statusKesehatan}</p><p style="font-family: 'Montserrat', sans-serif; color: black;">Tanggal Update : ${item.datetime}</p><p style="font-family: 'Montserrat', sans-serif; color: black;">Temperature : ${item.temperature}</p><p style="font-family: 'Montserrat', sans-serif; color: black;">Humidity : ${item.humidity}</p><p style="font-family: 'Montserrat', sans-serif; color: black;">Pressure : ${item.pressure}</p><p style="font-family: 'Montserrat', sans-serif; color: black;">Lux : ${item.lux}</p>`)
 								.addTo(map);
 						}
 					});

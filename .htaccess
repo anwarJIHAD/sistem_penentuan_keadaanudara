@@ -1,6 +1,9 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteBase /tracking_pengendara/
+	<IfModule mod_headers.c>
+	Header set Access-Control-Allow-Origin "*"
+	</IfModule>
 
     # Redirect Trailing Slashes...
     RewriteCond %{REQUEST_FILENAME} !-d
@@ -11,3 +14,4 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.*)$ index.php/$1 [L]
 </IfModule>
+	

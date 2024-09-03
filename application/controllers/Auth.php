@@ -94,8 +94,9 @@ class auth extends CI_Controller
 					$data = [
 						'is_member' => 1,
 						'is_login' => true,
-						'login_type' => 'admin',
+						'login_type' => 'admin', 
 						'nama_komunitas' => $user['nama_komunitas'],
+						'id_alat' => $user['id_alat'],	
 						'data_login' => [
 							'id_alat' => $user->id_alat,
 							'id_user' => $user->id_user,

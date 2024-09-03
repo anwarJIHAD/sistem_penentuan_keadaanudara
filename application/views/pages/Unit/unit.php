@@ -47,45 +47,6 @@
 <!-- Bootstrap Table with Header - Light -->
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
 	crossorigin="anonymous"></script>
-<!-- <script>
-	$(document).ready(function () {
-		load_data();
-		function load_data(query) {
-			$.ajax({
-				url: "<?= base_url(); ?>C_Unit/fetch",
-				method: "POST",
-				data: {
-					query: query
-				},
-				success: function (data) {
-					$('#resultMain').html(data);
-				}
-			})
-		}
-
-		$('#posSearch').on("keyup", function () {
-			$('#Psearch').val('');
-			var search = $(this).val();
-			if (search != '') {
-				load_data(search);
-			} else {
-				load_data();
-			}
-		});
-		$("#Psearch").change(function () {
-			$('#posSearch').val('');
-			var search = $(this).val();
-
-			if (search != '') {
-				load_data(search);
-				console.log(search)
-			} else {
-				load_data();
-			}
-		});
-
-	});
-</script> -->
 <script>
 	'use strict';
 
