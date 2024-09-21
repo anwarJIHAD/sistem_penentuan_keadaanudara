@@ -76,7 +76,7 @@
 				<div class="w-px-400 mx-auto">
 					<!-- Logo -->
 					<div class="app-brand mb-5">
-						<a href="index.html" class="app-brand-link gap-2">
+						<a href="#" class="app-brand-link gap-2">
 							<span class="app-brand-logo demo">
 								<img src="<?= base_url('assets/template/') ?>assets\img\logo\logo_strata_png.png"
 									alt="Logo" width="300" />

@@ -19,7 +19,7 @@ class C_Unit extends SDA_Controller
 	{
 
 		$data['judul'] = "Halaman Unit";
-		$data['Unit'] = $this->User_model->get();
+		$data['Unit'] = $this->User_model->get_unit();
 		$this->load->view('pages/layout/header', $data);
 		$this->load->view("pages/Unit/Unit", $data);
 		$this->load->view('pages/layout/footer', $data);

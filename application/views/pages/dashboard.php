@@ -8,12 +8,13 @@
 	<meta name="viewport"
 		content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-	<title>CycleSense -Tracking Keadaan Udara Komunitas Sepeda</title>
+	<title>StraAir - (Air Quality Tracking System With Mobile Station)</title>
 
 	<meta name="description" content="" />
 
 	<!-- Favicon -->
-	<link rel="icon" type="image/x-icon" href="<?= base_url('assets/template/') ?>assets\img\logo\logo_strata_png.png" />
+	<link rel="icon" type="image/x-icon"
+		href="<?= base_url('assets/template/') ?>assets\img\logo\logo_strata_png.png" />
 
 	<!-- Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -56,6 +57,16 @@
 			height: 10px;
 			cursor: pointer;
 		}
+
+		.rekomendasi:hover {
+			background-color: #007bff;
+			color: #007bff;
+		}
+
+		.rekomendasi:hover .coba {
+			color: white;
+			/* warna teks saat hover */
+		}
 	</style>
 	<!-- Helpers -->
 	<script src="<?= base_url('assets/template/') ?>assets/vendor/js/helpers.js"></script>
@@ -73,12 +84,12 @@
 			<nav class="layout-navbar navbar navbar-expand-xl align-items-center bg-navbar-theme" id="layout-navbar">
 				<div class="container-xxl">
 					<div class="navbar-brand app-brand demo d-none d-xl-flex py-0 me-4">
-						<a href="index.html" class="app-brand-link gap-2">
+						<a href="#" class="app-brand-link gap-2">
 							<span class="app-brand-logo demo">
 								<img src="<?= base_url('assets/template/') ?>assets\img\logo\logo_strata_png.png"
 									alt="Logo" width="80" />
 							</span>
-							<span class="app-brand-text demo menu-text fw-bold">CycleSense 2.5</span>
+							<span class="app-brand-text demo menu-text fw-bold">STRAAIR</span>
 						</a>
 
 						<a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-xl-none">
@@ -93,10 +104,20 @@
 					</div>
 
 					<div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+					<a href="<?= base_url('') ?>" class="menu-link menu-toggle">
+                      <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                      <div data-i18n="Dashboard">Dashboard</div>
+                    </a>
+					<div style="margin-left:100px;">
+					<a href="<?= base_url('/C_Rekomendasi_all') ?>" class="menu-link ml-6">
+                          <i class="menu-icon tf-icons bx bx-diamond"></i>
+                          <div data-i18n="Rekomendasi">Rekomendasi</div>
+                        </a>
+						
+					</div>
 						<ul class="navbar-nav flex-row align-items-center ms-auto">
 							<a href="<?= base_url('Auth') ?>"> <button
 									class="btn btn-primary btn-submit">Login</button></a>
-
 						</ul>
 					</div>
 
@@ -156,7 +177,7 @@
 											<div class="card-body">
 												<h5 class="card-title text-primary">Selamat Datang 🎉</h5>
 												<p class="mb-4">
-													Sistem Informasi Keadaan Udara <span class="fw-medium">72%</span>
+												StraAir - (Air Quality Tracking System With Mobile Station) <span class="fw-medium"></span>
 
 												</p>
 
@@ -175,26 +196,33 @@
 							</div>
 						</div>
 						<div class="row">
+							
+							
 							<div class="col-sm-6 col-lg-3 mb-4">
-								<div class="card card-border-shadow-primary h-100">
-									<div class="card-body">
-										<div class="d-flex align-items-center mb-2 pb-1">
-											<div class="avatar me-2">
-												<span class="avatar-initial rounded bg-label-primary"><i
-														class="bx bxs-truck"></i></span>
+								<a href=" <?= base_url('/C_Rekomendasi_all') ?>">
+									<div class="card card-border-shadow-info h-100 rekomendasi">
+										<div class="card-body">
+											<div class="d-flex align-items-center mb-2 pb-1">
+												<div class="avatar me-2">
+													<span class="avatar-initial rounded bg-label-primary"><i
+															class='bx bxl-sketch'></i></i></span>
+												</div>
+
+												<h5 class="ms-1 mb-0 coba">
+													Rekomendasi Titik Wilayah</h5><br>
+
 											</div>
-											<h5 class="ms-1 mb-0">PM25 Tertinggi</h5>
-										</div>
-										<div class="d-flex justify-content-center">
-											<h2 class="mb-0 text-danger">Pekanbaru</h2>
-										</div>
+											<div
+												class="d-flex justify-content-center align-items-center mb-2 pb-1 coba">
+												Klik Untuk Melihat 
+											</div>
 
-									</div>
-								</div>
+										</div>
+								</a>
 							</div>
-
-
-							<div class="col-sm-6 col-lg-3 mb-4">
+							
+						</div>
+						<div class="col-sm-6 col-lg-3 mb-4">
 								<div class="card card-border-shadow-info h-100">
 									<div class="card-body">
 										<div class="d-flex align-items-center mb-2 pb-1">
@@ -205,14 +233,15 @@
 											<h5 class="ms-1 mb-0">
 												Lokasi Paling Tercemar</h5>
 										</div>
-										<div class="d-flex justify-content-center">
-											<h2 class="mb-0">Rumbai</h2>
-											<small class="text-danger"> Km</small>
-
+										<div class="d-flex justify-content-center " >
+											<h4 style="color:red;" class="mb-1"><?php echo $tercemar['nama_wilayah'] ?></h4>
 										</div>
+										<div class="d-flex justify-content-center " >
+										<h5><?php echo $tercemar['maxpm25'] ?>  µm</h5>
+										</div>
+										
 									</div>
 								</div>
-							</div>
 						</div>
 						<div class="row">
 							<div class="col-12">
@@ -270,7 +299,7 @@
 												</div>
 
 											</div>
-											<div class="alert alert-white" style="100%">
+											<div class="alert alert-white" >
 												<p>Keterangan:</p>
 												<div class="d-flex justify-content-center text-center">
 													<div style="background-color: #28dac6; color: white; width: 20%;">
@@ -354,7 +383,7 @@
 
 											</div>
 										</div>
-										<div class="alert alert-white" style="100%">
+										<div class="alert alert-white" >
 											<p>Keterangan:</p>
 											<div class="d-flex justify-content-center text-center">
 												<div style="background-color: #28dac6; color: white; width: 20%;">Baik
@@ -424,7 +453,7 @@
 											</div>
 											<div class="card-body chartbulan_temperature">
 												<!-- <div id="totalIncomeChart1"></div> -->
-												<div id="id_chart_temperature" class="px-2"></div>
+												<div id="scatterChart" class="px-1"></div>
 
 											</div>
 										</div>
@@ -437,7 +466,7 @@
 									<div class="col-md-12">
 										<div class="card-header">
 											<h5 class="card-title mb-0">Rata Rata Harian</h5>
-											<small class="card-subtitle">Keadaan Udara (PM2.5)</small>
+											<small class="card-subtitle">Keadaan Cuaca (Temperature,Humidity)</small>
 											<div class="d-flex justify-content-center">
 												<div class="col col-sm-3 col-md-3 col-lg-3 p-2 p-3">
 													<label for="tahun" class="form-label">Tahun</label>
@@ -494,6 +523,9 @@
 								</div>
 							</div>
 						</div>
+
+						<!-- coba dengan grafik berbeda -->
+
 					</div>
 					<!--/ Content -->
 
@@ -547,7 +579,7 @@
 	<script src="<?= base_url('assets/template/') ?>assets/js/main.js"></script>
 
 	<!-- Page JS -->
-	<script src="<?= base_url('assets/template/') ?>assets/js/dashboards-analytics.js"></script>
+	<script src="<?= base_url('assets/template/') ?>assets/js/charts-apex.js"></script>
 	<script src="<?= base_url('assets/template/') ?>assets/js/app-ecommerce-dashboard.js"></script>
 	<script src="<?= base_url('assets/template/') ?>assets/js/charts-chartjs.js"></script>
 	<!-- <script src="<?= base_url('assets/template/') ?>assets/js/maps-leaflet.js"></script> -->

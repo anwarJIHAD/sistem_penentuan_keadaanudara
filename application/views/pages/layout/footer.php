@@ -7,7 +7,7 @@
 				document.write(new Date().getFullYear());
 			</script>
 			, made with Anwar by
-			<a href="https://themeselection.com" target="_blank" class="footer-link fw-medium">CycleSense</a>
+			<a href="#" target="_blank" class="footer-link fw-medium">Straair</a>
 		</div>
 
 	</div>
@@ -59,7 +59,7 @@
 <script src="<?= base_url('assets/template/') ?>assets/js/main.js"></script>
 
 <!-- Page JS -->
-<script src="<?= base_url('assets/template/') ?>assets/js/dashboards-analytics.js"></script>
+<script src="<?= base_url('assets/template/') ?>assets/js/charts-apex.js"></script>
 <script src="<?= base_url('assets/template/') ?>assets/js/app-ecommerce-dashboard.js"></script>
 <script src="<?= base_url('assets/template/') ?>assets/js/charts-chartjs.js"></script>
 

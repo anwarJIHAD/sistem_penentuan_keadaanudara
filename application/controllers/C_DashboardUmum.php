@@ -22,7 +22,12 @@ class C_DashboardUmum extends CI_Controller
 		// die;
 		echo json_encode($data);
 	}
+	public function rekomendasi()
+	{
+		$data['judul'] = 'rekomendasi';
+		$this->load->view('pages/rekomendasi', $data);
 
+	}
 	public function index()
 	{
 		$bulan = array(
@@ -39,10 +44,23 @@ class C_DashboardUmum extends CI_Controller
 			"11" => "November",
 			"12" => "Desember"
 		);
+		$wilayahPm25 = $this->Wilayah_model->getMaxPm25ByWilayahWithTolerance();
+
+		$maxPm25Wilayah = null; // Untuk menyimpan data wilayah dengan pm25 tertinggi
+		$maxPm25 = 0; // Untuk menyimpan nilai pm25 tertinggi
+		foreach ($wilayahPm25 as $wilayah) {
+			if ($wilayah['maxpm25'] > $maxPm25) {
+				$maxPm25 = $wilayah['maxpm25'];
+				$maxPm25Wilayah = $wilayah; // Simpan wilayah dengan pm25 tertinggi
+			}
+		}
+		
+		
 		$tahun_sekarang = date('Y');
 		$tahun_range = range($tahun_sekarang, $tahun_sekarang - 20, -1);
 		$data['tahun'] = $tahun_range;
 		$data['bulan'] = $bulan;
+		$data['tercemar'] = $maxPm25Wilayah;
 		$data['wilayah'] = $this->Wilayah_model->get();
 		$data['judul'] = "Halaman Dashboard";
 		// $this->load->view('pages/layout/header', $data);
@@ -153,5 +171,7 @@ class C_DashboardUmum extends CI_Controller
 			echo json_encode(array('error' => $e->getMessage()));
 		}
 	}
+
+	
 
 }

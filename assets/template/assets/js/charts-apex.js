@@ -255,127 +255,401 @@
     barChart.render();
   }
 
+let tahun = '';
+	let bulan=''
+	let wilayah = '';
+	dataPerbulan_t();
+	dataPerhari_t();
+	$('#search_temperatureTahun').change(function () {
+    var tahun = $(this).val().toLowerCase();
+    var wilayah = $('#search_wilayahWilayah').val().toLowerCase();
+		dataPerbulan_t(tahun,wilayah);
+	});
+	$('#search_wilayahWilayah').change(function () {
+			var tahun = $('#search_temperatureTahun').val().toLowerCase();
+			var wilayah = $(this).val().toLowerCase();
+			dataPerbulan_t(tahun,wilayah);
+	});
+
+	//search harian
+	$('#search_temperatureTahun_H').change(function () {
+    var tahun = $(this).val().toLowerCase();
+    var bulan = $('#search_temperatureBulan_H').val().toLowerCase();
+    var wilayah = $('#search_wilayahTemperatureH').val().toLowerCase();
+    console.log(tahun,bulan,wilayah);
+		dataPerhari_t(tahun,bulan,wilayah);
+	});
+	$('#search_temperatureBulan_H').change(function () {
+		var tahun = $('#search_temperatureTahun_H').val().toLowerCase();
+		var bulan = $(this).val().toLowerCase();
+		var wilayah = $('#search_wilayahTemperatureH').val().toLowerCase();
+		console.log(tahun,bulan,wilayah);
+			dataPerhari_t(tahun,bulan,wilayah);
+		});
+	$('#search_wilayahTemperatureH').change(function () {
+			var tahun = $('#search_temperatureTahun_H').val().toLowerCase();
+			var bulan = $('#search_temperatureBulan_H').val().toLowerCase();
+			var wilayah = $(this).val().toLowerCase();
+			console.log(tahun,bulan,wilayah);
+			dataPerhari_t(tahun,bulan,wilayah);
+	});
+
+  function dataPerhari_t(tahun,bulan,wilayah){
+		$.ajax({
+			url: 'http://localhost/tracking_pengendara/C_DashboardUmum/getbyhari', //url
+			type: 'GET',
+			data: { tahun: tahun,bulan:bulan,wilayah:wilayah },
+			dataType: 'json',
+			success: function (response) {
+				
+				var hari_1 = (response['hari_1'] && response['hari_1']['temperature']) ? parseFloat(response['hari_1']['temperature']).toFixed(1) : 0;
+				var hari_1 = (response['hari_1'] && response['hari_1']['temperature']) ? parseFloat(response['hari_1']['temperature']).toFixed(1) : 0;
+				var hari_2 = (response['hari_2'] && response['hari_2']['temperature']) ? parseFloat(response['hari_2']['temperature']).toFixed(1) : 0;
+				var hari_3 = (response['hari_3'] && response['hari_3']['temperature']) ? parseFloat(response['hari_3']['temperature']).toFixed(1) : 0;
+				var hari_4 = (response['hari_4'] && response['hari_4']['temperature']) ? parseFloat(response['hari_4']['temperature']).toFixed(1) : 0;
+				var hari_5 = (response['hari_5'] && response['hari_5']['temperature']) ? parseFloat(response['hari_5']['temperature']).toFixed(1) : 0;
+				var hari_6 = (response['hari_6'] && response['hari_6']['temperature']) ? parseFloat(response['hari_6']['temperature']).toFixed(1) : 0;
+				var hari_7 = (response['hari_7'] && response['hari_7']['temperature']) ? parseFloat(response['hari_7']['temperature']).toFixed(1) : 0;
+				var hari_8 = (response['hari_8'] && response['hari_8']['temperature']) ? parseFloat(response['hari_8']['temperature']).toFixed(1) : 0;
+				var hari_9 = (response['hari_9'] && response['hari_9']['temperature']) ? parseFloat(response['hari_9']['temperature']).toFixed(1) : 0;
+				var hari_10 = (response['hari_10'] && response['hari_10']['temperature']) ? parseFloat(response['hari_10']['temperature']).toFixed(1) : 0;
+				var hari_11 = (response['hari_11'] && response['hari_11']['temperature']) ? parseFloat(response['hari_11']['temperature']).toFixed(1) : 0;
+				var hari_12 = (response['hari_12'] && response['hari_12']['temperature']) ? parseFloat(response['hari_12']['temperature']).toFixed(1) : 0;
+				var hari_13 = (response['hari_13'] && response['hari_13']['temperature']) ? parseFloat(response['hari_13']['temperature']).toFixed(1) : 0;
+				var hari_14 = (response['hari_14'] && response['hari_14']['temperature']) ? parseFloat(response['hari_14']['temperature']).toFixed(1) : 0;
+				var hari_15 = (response['hari_15'] && response['hari_15']['temperature']) ? parseFloat(response['hari_15']['temperature']).toFixed(1) : 0;
+				var hari_16 = (response['hari_16'] && response['hari_16']['temperature']) ? parseFloat(response['hari_16']['temperature']).toFixed(1) : 0;
+				var hari_17 = (response['hari_17'] && response['hari_17']['temperature']) ? parseFloat(response['hari_17']['temperature']).toFixed(1) : 0;
+				var hari_18 = (response['hari_18'] && response['hari_18']['temperature']) ? parseFloat(response['hari_18']['temperature']).toFixed(1) : 0;
+				var hari_19 = (response['hari_19'] && response['hari_19']['temperature']) ? parseFloat(response['hari_19']['temperature']).toFixed(1) : 0;
+				var hari_20 = (response['hari_20'] && response['hari_20']['temperature']) ? parseFloat(response['hari_20']['temperature']).toFixed(1) : 0;
+				var hari_21 = (response['hari_21'] && response['hari_21']['temperature']) ? parseFloat(response['hari_21']['temperature']).toFixed(1) : 0;
+				var hari_22 = (response['hari_22'] && response['hari_22']['temperature']) ? parseFloat(response['hari_22']['temperature']).toFixed(1) : 0;
+				var hari_23 = (response['hari_23'] && response['hari_23']['temperature']) ? parseFloat(response['hari_23']['temperature']).toFixed(1) : 0;
+				var hari_24 = (response['hari_24'] && response['hari_24']['temperature']) ? parseFloat(response['hari_24']['temperature']).toFixed(1) : 0;
+				var hari_25 = (response['hari_25'] && response['hari_25']['temperature']) ? parseFloat(response['hari_25']['temperature']).toFixed(1) : 0;
+				var hari_26 = (response['hari_26'] && response['hari_26']['temperature']) ? parseFloat(response['hari_26']['temperature']).toFixed(1) : 0;
+				var hari_27 = (response['hari_27'] && response['hari_27']['temperature']) ? parseFloat(response['hari_27']['temperature']).toFixed(1) : 0;
+				var hari_28 = (response['hari_28'] && response['hari_28']['temperature']) ? parseFloat(response['hari_28']['temperature']).toFixed(1) : 0;
+				var hari_29 = (response['hari_29'] && response['hari_29']['temperature']) ? parseFloat(response['hari_29']['temperature']).toFixed(1) : 0;
+				var hari_30 = (response['hari_30'] && response['hari_30']['temperature']) ? parseFloat(response['hari_30']['temperature']).toFixed(1) : 0;
+				var hari_31 = (response['hari_31'] && response['hari_31']['temperature']) ? parseFloat(response['hari_31']['temperature']).toFixed(1) : 0;
+
+
+				var hari_1_humidity = (response['hari_1'] && response['hari_1']['humidity']) ? parseFloat(response['hari_1']['humidity']).toFixed(1) : 0;
+				var hari_2_humidity = (response['hari_2'] && response['hari_2']['humidity']) ? parseFloat(response['hari_2']['humidity']).toFixed(1) : 0;
+				var hari_3_humidity = (response['hari_3'] && response['hari_3']['humidity']) ? parseFloat(response['hari_3']['humidity']).toFixed(1) : 0;
+				var hari_4_humidity = (response['hari_4'] && response['hari_4']['humidity']) ? parseFloat(response['hari_4']['humidity']).toFixed(1) : 0;
+				var hari_5_humidity = (response['hari_5'] && response['hari_5']['humidity']) ? parseFloat(response['hari_5']['humidity']).toFixed(1) : 0;
+				var hari_6_humidity = (response['hari_6'] && response['hari_6']['humidity']) ? parseFloat(response['hari_6']['humidity']).toFixed(1) : 0;
+				var hari_7_humidity = (response['hari_7'] && response['hari_7']['humidity']) ? parseFloat(response['hari_7']['humidity']).toFixed(1) : 0;
+				var hari_8_humidity = (response['hari_8'] && response['hari_8']['humidity']) ? parseFloat(response['hari_8']['humidity']).toFixed(1) : 0;
+				var hari_9_humidity = (response['hari_9'] && response['hari_9']['humidity']) ? parseFloat(response['hari_9']['humidity']).toFixed(1) : 0;
+				var hari_10_humidity = (response['hari_10'] && response['hari_10']['humidity']) ? parseFloat(response['hari_10']['humidity']).toFixed(1) : 0;
+				var hari_11_humidity = (response['hari_11'] && response['hari_11']['humidity']) ? parseFloat(response['hari_11']['humidity']).toFixed(1) : 0;
+				var hari_12_humidity = (response['hari_12'] && response['hari_12']['humidity']) ? parseFloat(response['hari_12']['humidity']).toFixed(1) : 0;
+				var hari_13_humidity = (response['hari_13'] && response['hari_13']['humidity']) ? parseFloat(response['hari_13']['humidity']).toFixed(1) : 0;
+				var hari_14_humidity = (response['hari_14'] && response['hari_14']['humidity']) ? parseFloat(response['hari_14']['humidity']).toFixed(1) : 0;
+				var hari_15_humidity = (response['hari_15'] && response['hari_15']['humidity']) ? parseFloat(response['hari_15']['humidity']).toFixed(1) : 0;
+				var hari_16_humidity = (response['hari_16'] && response['hari_16']['humidity']) ? parseFloat(response['hari_16']['humidity']).toFixed(1) : 0;
+				var hari_17_humidity = (response['hari_17'] && response['hari_17']['humidity']) ? parseFloat(response['hari_17']['humidity']).toFixed(1) : 0;
+				var hari_18_humidity = (response['hari_18'] && response['hari_18']['humidity']) ? parseFloat(response['hari_18']['humidity']).toFixed(1) : 0;
+				var hari_19_humidity = (response['hari_19'] && response['hari_19']['humidity']) ? parseFloat(response['hari_19']['humidity']).toFixed(1) : 0;
+				var hari_20_humidity = (response['hari_20'] && response['hari_20']['humidity']) ? parseFloat(response['hari_20']['humidity']).toFixed(1) : 0;
+				var hari_21_humidity = (response['hari_21'] && response['hari_21']['humidity']) ? parseFloat(response['hari_21']['humidity']).toFixed(1) : 0;
+				var hari_22_humidity = (response['hari_22'] && response['hari_22']['humidity']) ? parseFloat(response['hari_22']['humidity']).toFixed(1) : 0;
+				var hari_23_humidity = (response['hari_23'] && response['hari_23']['humidity']) ? parseFloat(response['hari_23']['humidity']).toFixed(1) : 0;
+				var hari_24_humidity = (response['hari_24'] && response['hari_24']['humidity']) ? parseFloat(response['hari_24']['humidity']).toFixed(1) : 0;
+				var hari_25_humidity = (response['hari_25'] && response['hari_25']['humidity']) ? parseFloat(response['hari_25']['humidity']).toFixed(1) : 0;
+				var hari_26_humidity = (response['hari_26'] && response['hari_26']['humidity']) ? parseFloat(response['hari_26']['humidity']).toFixed(1) : 0;
+				var hari_27_humidity = (response['hari_27'] && response['hari_27']['humidity']) ? parseFloat(response['hari_27']['humidity']).toFixed(1) : 0;
+				var hari_28_humidity = (response['hari_28'] && response['hari_28']['humidity']) ? parseFloat(response['hari_28']['humidity']).toFixed(1) : 0;
+				var hari_29_humidity = (response['hari_29'] && response['hari_29']['humidity']) ? parseFloat(response['hari_29']['humidity']).toFixed(1) : 0;
+				var hari_30_humidity = (response['hari_30'] && response['hari_30']['humidity']) ? parseFloat(response['hari_30']['humidity']).toFixed(1) : 0;
+				var hari_31_humidity = (response['hari_31'] && response['hari_31']['humidity']) ? parseFloat(response['hari_31']['humidity']).toFixed(1) : 0;
+				const existingChartEl = document.querySelector('#id_chart_temperature_H');
+				if (existingChartEl) {
+					existingChartEl.remove();
+				}
+				const newChartContainer = document.createElement('div');
+				newChartContainer.id = 'id_chart_temperature_H';
+				newChartContainer.classList.add('px-2');
+        document.querySelector('.card-body.charthari_temperature').appendChild(newChartContainer);
+
+        const scatterChartEl = document.querySelector('#id_chart_temperature_H'),
+        scatterChartConfig = {
+          chart: {
+            height: 400,
+            type: 'scatter',
+            zoom: {
+              enabled: true,
+              type: 'xy'
+            },
+            parentHeightOffset: 0,
+            toolbar: {
+              show: false
+            }
+          },
+          grid: {
+            borderColor: borderColor,
+            xaxis: {
+              lines: {
+                show: true
+              }
+            }
+          },
+          legend: {
+            show: true,
+            position: 'top',
+            horizontalAlign: 'start',
+            labels: {
+              colors: legendColor,
+              useSeriesColors: false
+            }
+          },
+          colors: [config.colors.warning, config.colors.primary, config.colors.success],
+          series: [
+            {
+              name: 'Temperature',
+              data: [
+                [1, hari_1],
+                [2, hari_2],
+                [3, hari_3],
+                [4, hari_4],
+                [5, hari_5],
+                [6, hari_6],
+                [7, hari_7],
+                [8, hari_8],
+                [9, hari_9],
+                [10, hari_10],
+                [11, hari_11],
+                [12, hari_12],
+                [13, hari_13],
+                [14, hari_14],
+                [15, hari_15],
+                [16, hari_16],
+                [17, hari_17],
+                [18, hari_18],
+                [19, hari_19],
+                [20, hari_20],
+                [21, hari_21],
+                [22, hari_22],
+                [23, hari_23],
+                [24, hari_24],
+                [25, hari_25],
+                [26, hari_26],
+                [27, hari_27],
+                [28, hari_28],
+                [29, hari_29],
+                [30, hari_30],
+                [31, hari_31],
+              ]
+            },
+            {
+              name: 'Humidity',
+              data: [
+                [1, hari_1_humidity],
+                [2, hari_2_humidity],
+                [3, hari_3_humidity],
+                [4, hari_4_humidity],
+                [5, hari_5_humidity],
+                [6, hari_6_humidity],
+                [7, hari_7_humidity],
+                [8, hari_8_humidity],
+                [9, hari_9_humidity],
+                [10, hari_10_humidity],
+                [11, hari_11_humidity],
+                [12, hari_12_humidity],
+                [13, hari_13_humidity],
+                [14, hari_14_humidity],
+                [15, hari_15_humidity],
+                [16, hari_16_humidity],
+                [17, hari_17_humidity],
+                [18, hari_18_humidity],
+                [19, hari_19_humidity],
+                [20, hari_20_humidity],
+                [21, hari_21_humidity],
+                [22, hari_22_humidity],
+                [23, hari_23_humidity],
+                [24, hari_24_humidity],
+                [25, hari_25_humidity],
+                [26, hari_26_humidity],
+                [27, hari_27_humidity],
+                [28, hari_28_humidity],
+                [29, hari_29_humidity],
+                [30, hari_30_humidity],
+                [31, hari_31_humidity],
+              ]
+            }
+          ],
+          xaxis: {
+            tickAmount: 31,
+            axisBorder: {
+              show: false
+            },
+            axisTicks: {
+              show: false
+            },
+            labels: {
+              formatter: function (val) {
+                return parseFloat(val).toFixed(0);
+              },
+              style: {
+                colors: labelColor,
+                fontSize: '13px'
+              }
+            }
+          },
+          yaxis: {
+            labels: {
+              style: {
+                colors: labelColor,
+                fontSize: '13px'
+              }
+            }
+          }
+        };
+      if (typeof scatterChartEl !== undefined && scatterChartEl !== null) {
+        const scatterChart = new ApexCharts(scatterChartEl, scatterChartConfig);
+        scatterChart.render();
+      }
+}
+			
+		});
+	}
   // Scatter Chart
   // --------------------------------------------------------------------
-  const scatterChartEl = document.querySelector('#scatterChart'),
-    scatterChartConfig = {
-      chart: {
-        height: 400,
-        type: 'scatter',
-        zoom: {
-          enabled: true,
-          type: 'xy'
-        },
-        parentHeightOffset: 0,
-        toolbar: {
-          show: false
+  
+  
+	//chart perbulan
+  function dataPerbulan_t(tahun, wilayah) {
+    $.ajax({
+        url: 'http://localhost/tracking_pengendara/C_DashboardUmum/getbybulan', //url
+        type: 'GET',
+        data: { tahun: tahun, wilayah: wilayah },
+        dataType: 'json',
+        success: function (response) {
+            
+            var month_1 = (response['month_1'] && response['month_1']['temperature']) ? parseFloat(response['month_1']['temperature']).toFixed(1) : 0;
+            var month_2 = (response['month_2'] && response['month_2']['temperature']) ? parseFloat(response['month_2']['temperature']).toFixed(1) : 0;
+            var month_3 = (response['month_3'] && response['month_3']['temperature']) ? parseFloat(response['month_3']['temperature']).toFixed(1) : 0;
+            var month_4 = (response['month_4'] && response['month_4']['temperature']) ? parseFloat(response['month_4']['temperature']).toFixed(1) : 0;
+            var month_5 = (response['month_5'] && response['month_5']['temperature']) ? parseFloat(response['month_5']['temperature']).toFixed(1) : 0;
+            var month_6 = (response['month_6'] && response['month_6']['temperature']) ? parseFloat(response['month_6']['temperature']).toFixed(1) : 0;
+            var month_7 = (response['month_7'] && response['month_7']['temperature']) ? parseFloat(response['month_7']['temperature']).toFixed(1) : 0;
+            var month_8 = (response['month_8'] && response['month_8']['temperature']) ? parseFloat(response['month_8']['temperature']).toFixed(1) : 0;
+            var month_9 = (response['month_9'] && response['month_9']['temperature']) ? parseFloat(response['month_9']['temperature']).toFixed(1) : 0;
+            var month_10 = (response['month_10'] && response['month_10']['temperature']) ? parseFloat(response['month_10']['temperature']).toFixed(1) : 0;
+            var month_11 = (response['month_11'] && response['month_11']['temperature']) ? parseFloat(response['month_11']['temperature']).toFixed(1) : 0;
+            var month_12 = (response['month_12'] && response['month_12']['temperature']) ? parseFloat(response['month_12']['temperature']).toFixed(1) : 0;
+
+            var month_1_humidity = (response['month_1'] && response['month_1']['humidity']) ? parseFloat(response['month_1']['humidity']).toFixed(1) : 0;
+            var month_2_humidity = (response['month_2'] && response['month_2']['humidity']) ? parseFloat(response['month_2']['humidity']).toFixed(1) : 0;
+            var month_3_humidity = (response['month_3'] && response['month_3']['humidity']) ? parseFloat(response['month_3']['humidity']).toFixed(1) : 0;
+            var month_4_humidity = (response['month_4'] && response['month_4']['humidity']) ? parseFloat(response['month_4']['humidity']).toFixed(1) : 0;
+            var month_5_humidity = (response['month_5'] && response['month_5']['humidity']) ? parseFloat(response['month_5']['humidity']).toFixed(1) : 0;
+            var month_6_humidity = (response['month_6'] && response['month_6']['humidity']) ? parseFloat(response['month_6']['humidity']).toFixed(1) : 0;
+            var month_7_humidity = (response['month_7'] && response['month_7']['humidity']) ? parseFloat(response['month_7']['humidity']).toFixed(1) : 0;
+            var month_8_humidity = (response['month_8'] && response['month_8']['humidity']) ? parseFloat(response['month_8']['humidity']).toFixed(1) : 0;
+            var month_9_humidity = (response['month_9'] && response['month_9']['humidity']) ? parseFloat(response['month_9']['humidity']).toFixed(1) : 0;
+            var month_10_humidity = (response['month_10'] && response['month_10']['humidity']) ? parseFloat(response['month_10']['humidity']).toFixed(1) : 0;
+            var month_11_humidity = (response['month_11'] && response['month_11']['humidity']) ? parseFloat(response['month_11']['humidity']).toFixed(1) : 0;
+            var month_12_humidity = (response['month_12'] && response['month_12']['humidity']) ? parseFloat(response['month_12']['humidity']).toFixed(1) : 0;
+
+            // Remove existing chart and create new container
+            const existingChartEl = document.querySelector('#scatterChart');
+            if (existingChartEl) {
+                existingChartEl.remove();
+            }
+            const newChartContainer = document.createElement('div');
+            newChartContainer.id = 'scatterChart';
+            newChartContainer.classList.add('px-3');
+            document.querySelector('.card-body.chartbulan_temperature').appendChild(newChartContainer);
+
+            // Configure bar chart
+            const scatterChartEl = document.querySelector('#scatterChart'),
+            scatterChartConfig = {
+                chart: {
+                    height: 400,
+                    type: 'bar', // Changed to 'bar'
+                    zoom: {
+                        enabled: true
+                    },
+                    parentHeightOffset: 0,
+                    toolbar: {
+                        show: false
+                    }
+                },
+                plotOptions: {
+                    bar: {
+                        horizontal: false,
+                        columnWidth: '50%', // Customize width
+                        endingShape: 'rounded' // Shape of the bars
+                    }
+                },
+                grid: {
+                    borderColor: borderColor,
+                    xaxis: {
+                        lines: {
+                            show: true
+                        }
+                    }
+                },
+                legend: {
+                    show: true,
+                    position: 'top',
+                    horizontalAlign: 'start',
+                    labels: {
+                        colors: legendColor,
+                        useSeriesColors: false
+                    }
+                },
+                colors: [config.colors.warning, config.colors.primary, config.colors.success],
+                series: [
+                    {
+                        name: 'Temperature',
+                        data: [
+                            month_1, month_2, month_3, month_4, month_5, month_6,
+                            month_7, month_8, month_9, month_10, month_11, month_12
+                        ]
+                    },
+                    {
+                        name: 'Humidity',
+                        data: [
+                            month_1_humidity, month_2_humidity, month_3_humidity, month_4_humidity,
+                            month_5_humidity, month_6_humidity, month_7_humidity, month_8_humidity,
+                            month_9_humidity, month_10_humidity, month_11_humidity, month_12_humidity
+                        ]
+                    }
+                ],
+                xaxis: {
+                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    labels: {
+                        style: {
+                            colors: labelColor,
+                            fontSize: '13px'
+                        }
+                    }
+                },
+                yaxis: {
+                    labels: {
+                        style: {
+                            colors: labelColor,
+                            fontSize: '13px'
+                        }
+                    }
+                }
+            };
+            
+            // Render chart
+            if (typeof scatterChartEl !== undefined && scatterChartEl !== null) {
+                const scatterChart = new ApexCharts(scatterChartEl, scatterChartConfig);
+                scatterChart.render();
+            }
         }
-      },
-      grid: {
-        borderColor: borderColor,
-        xaxis: {
-          lines: {
-            show: true
-          }
-        }
-      },
-      legend: {
-        show: true,
-        position: 'top',
-        horizontalAlign: 'start',
-        labels: {
-          colors: legendColor,
-          useSeriesColors: false
-        }
-      },
-      colors: [config.colors.warning, config.colors.primary, config.colors.success],
-      series: [
-        {
-          name: 'Angular',
-          data: [
-            [5.4, 170],
-            [5.4, 100],
-            [5.7, 110],
-            [5.9, 150],
-            [6.0, 200],
-            [6.3, 170],
-            [5.7, 140],
-            [5.9, 130],
-            [7.0, 150],
-            [8.0, 120],
-            [9.0, 170],
-            [10.0, 190],
-            [11.0, 220],
-            [12.0, 170],
-            [13.0, 230]
-          ]
-        },
-        {
-          name: 'Vue',
-          data: [
-            [14.0, 220],
-            [15.0, 280],
-            [16.0, 230],
-            [18.0, 320],
-            [17.5, 280],
-            [19.0, 250],
-            [20.0, 350],
-            [20.5, 320],
-            [20.0, 320],
-            [19.0, 280],
-            [17.0, 280],
-            [22.0, 300],
-            [18.0, 120]
-          ]
-        },
-        {
-          name: 'React',
-          data: [
-            [14.0, 290],
-            [13.0, 190],
-            [20.0, 220],
-            [21.0, 350],
-            [21.5, 290],
-            [22.0, 220],
-            [23.0, 140],
-            [19.0, 400],
-            [20.0, 200],
-            [22.0, 90],
-            [20.0, 120]
-          ]
-        }
-      ],
-      xaxis: {
-        tickAmount: 10,
-        axisBorder: {
-          show: false
-        },
-        axisTicks: {
-          show: false
-        },
-        labels: {
-          formatter: function (val) {
-            return parseFloat(val).toFixed(1);
-          },
-          style: {
-            colors: labelColor,
-            fontSize: '13px'
-          }
-        }
-      },
-      yaxis: {
-        labels: {
-          style: {
-            colors: labelColor,
-            fontSize: '13px'
-          }
-        }
-      }
-    };
-  if (typeof scatterChartEl !== undefined && scatterChartEl !== null) {
-    const scatterChart = new ApexCharts(scatterChartEl, scatterChartConfig);
-    scatterChart.render();
-  }
+    });
+}
+
 
   // Line Chart
   // --------------------------------------------------------------------

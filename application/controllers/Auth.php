@@ -28,7 +28,22 @@ class auth extends CI_Controller
 			$this->cek_login();
 		}
 	}
-
+	function portal(){
+		if ($this->session->userdata('is_admin')) {
+			redirect('C_Dashboard_user');
+		}
+		$this->form_validation->set_rules('email', 'email', 'trim|required', [
+			'required' => 'email Wajib di isi'
+		]);
+		$this->form_validation->set_rules('password', 'password', 'trim|required', [
+			'required' => 'password Wajib di isi'
+		]);
+	if ($this->form_validation->run() == false) {
+		$this->load->view("pages/Auth/login_admin");
+	} else {
+		$this->cek_login_admin();
+	}
+}
 	function registrasi()
 	{
 		if ($this->session->userdata('NIP')) {
@@ -93,7 +108,7 @@ class auth extends CI_Controller
 				if ($user['status'] == '1') {
 					$data = [
 						'is_member' => 1,
-						'is_login' => true,
+						'is_login' => true,	
 						'login_type' => 'admin', 
 						'nama_komunitas' => $user['nama_komunitas'],
 						'id_alat' => $user['id_alat'],	
@@ -125,6 +140,53 @@ class auth extends CI_Controller
 			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="elert">
             Akun Belum Terdaftar</div>');
 			redirect('auth');
+		}
+	}
+
+	public function cek_login_admin()
+	{
+		$email = $this->input->post('email');
+		$password = $this->input->post('password');
+		$user = $this->db->get_where('user', ['email' => $email])->row_array();
+
+		if ($user) {
+			if (password_verify($password, $user['password'])) {
+			if ($user['role'] == 'admin') {
+				if ($user['status'] == '1') {
+					$data = [
+						'is_admin' => 1,
+						'is_login' => true,	
+						'login_type' => 'admin', 
+						'nama_komunitas' => $user['nama_komunitas'],
+						'id_alat' => $user['id_alat'],	
+						'data_login' => [
+							'id_alat' => $user->id_alat,
+							'id_user' => $user->id_user,
+							'email' => $user->email,
+							'nama_komunitas' => $user['nama_komunitas'],
+						]
+					];
+					$this->session->set_userdata($data);
+					redirect('C_Dashboard_user');
+				} else {
+					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="elert">
+                    Akun admin Tidak Aktif</div>');
+					redirect('portal-admin');
+				}
+			} else {
+				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="elert">
+                    Akun tidak terdaftar dengan role admin</div>');
+				redirect('portal-admin');
+			}
+			} else {
+				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="elert">
+			Password admin Salah!</div>');
+				redirect('portal-admin');
+			}
+		} else {
+			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="elert">
+            Akun Belum Terdaftar</div>');
+			redirect('portal-admin');
 		}
 	}
 

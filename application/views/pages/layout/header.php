@@ -9,12 +9,12 @@
 	<meta name="viewport"
 		content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-	<title>Dashboard - User</title>
+	<title>StraAir - (Air Quality Tracking System With Mobile Station)</title>
 
 	<meta name="description" content="" />
 
 	<!-- Favicon -->
-	<link rel="icon" type="image/x-icon" href="<?= base_url('assets/template/') ?>assets/img/favicon/favicon.ico" />
+	
 	<link rel="icon" type="image/x-icon" href="<?= base_url('assets/template/') ?>assets\img\logo\logo_strata_png.png" />
 
 	<!-- Fonts -->
@@ -179,16 +179,11 @@
 				<div class="menu-inner-shadow"></div>
 
 				<ul class="menu-inner py-1 menus">
-					<li class="menu-item">
+					<?php if($this->session->userdata('is_admin')) {?>
+						<li class="menu-item">
 						<a href="<?= base_url('C_Dashboard_user') ?>" class="menu-link">
 							<i class="menu-icon tf-icons bx bx-home-circle"></i>
 							<div class="text-truncate" data-i18n="Dashboard">Dashboard</div>
-						</a>
-					</li>
-					<li class="menu-item">
-						<a href="<?= base_url('C_Rute') ?>" class="menu-link">
-							<i class="menu-icon tf-icons bx bxs-universal-access"></i>
-							<div class="text-truncate" data-i18n="Manajemen Perjalanan">Manajemen Perjalanan</div>
 						</a>
 					</li>
 					<li class="menu-item">
@@ -197,6 +192,22 @@
 							<div class="text-truncate" data-i18n="Manajemen Perangkat">Manajemen Perangkat</div>
 						</a>
 					</li>
+						<?php } else{?>
+							<li class="menu-item">
+						<a href="<?= base_url('C_Dashboard_user') ?>" class="menu-link">
+							<i class="menu-icon tf-icons bx bx-home-circle"></i>
+							<div class="text-truncate" data-i18n="Dashboard">Dashboard</div>
+						</a>
+					</li>
+					<li class="menu-item">
+						<a href="<?= base_url('C_Rute') ?>" class="menu-link">
+							<i class="menu-icon tf-icons bx bxs-universal-access"></i>
+							<div class="text-truncate" data-i18n="Riwayah Perjalanan">Riwayat Perjalanan</div>
+						</a>
+					</li>
+							<?php } ?>
+					
+					
 					<!-- <li class="menu-item">
 						<a href="<?= base_url('C_Rekomendasi') ?>" class="menu-link">
 							<i class="menu-icon tf-icons bx bxs-map-pin"></i>

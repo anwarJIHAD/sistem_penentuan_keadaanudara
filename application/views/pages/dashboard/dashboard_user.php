@@ -1,5 +1,5 @@
 <div class="container-xxl flex-grow-1 container-p-y">
-	<h4 class="py-3 mb-4"><span class="text-muted fw-light">CycleSense /</span> Dashboard</h4>
+	<h4 class="py-3 mb-4"><span class="text-muted fw-light">Straair /</span> Dashboard</h4>
 	<div class="row">
 		<div class="col-lg- mb-4 order-0">
 			<div class="card">
@@ -8,10 +8,8 @@
 						<div class="card-body">
 							<h5 class="card-title text-primary">Selamat Datang 🎉</h5>
 							<p class="mb-4">
-								Sistem Informasi Keadaan Udara <span class="fw-medium">72%</span>
-
+							StraAir - (Air Quality Tracking System With Mobile Station)
 							</p>
-
 						</div>
 					</div>
 					<div class="col-sm-5 text-center text-sm-left">
@@ -19,7 +17,7 @@
 							<img src="<?= base_url('assets/template/') ?>assets/img/illustrations/boy-verify-email-light.png"
 								height="140" alt="View Badge User"
 								data-app-dark-img="illustrations/boy-verify-email-dark.png"
-								data-app-light-img="illustrations/boy-verify-email-light.png" />
+								data-app-light-img="illustrations/boy-verify-email-light.png"/>
 						</div>
 					</div>
 				</div>
@@ -28,22 +26,34 @@
 	</div>
 	<!-- Card Border Shadow -->
 	<div class="row">
-		<div class="col-sm-6 col-lg-3 mb-4">
-			<div class="card card-border-shadow-primary h-100">
-				<div class="card-body">
-					<div class="d-flex align-items-center mb-2 pb-1">
-						<div class="avatar me-2">
-							<span class="avatar-initial rounded bg-label-primary"><i class="bx bxs-truck"></i></span>
-						</div>
-						<h5 class="ms-1 mb-0">PM25 Tertinggi</h5>
-					</div>
-					<div class="d-flex justify-content-center">
-						<h2 class="mb-0 text-danger">Pekanbaru</h2>
-					</div>
+							
+							
+							<div class="col-sm-6 col-lg-3 mb-4">
+								<a href=" <?= base_url('/C_Rekomendasi_all') ?>">
+									<div class="card card-border-shadow-info h-100 rekomendasi">
+										<div class="card-body">
+											<div class="d-flex align-items-center mb-2 pb-1">
+												<div class="avatar me-2">
+													<span class="avatar-initial rounded bg-label-primary"><i
+															class='bx bxl-sketch'></i></i></span>
+												</div>
 
-				</div>
-			</div>
-		</div>
+												<h5 class="ms-1 mb-0 coba">
+													Rekomendasi Titik Wilayah</h5><br>
+
+											</div>
+											<div
+												class="d-flex justify-content-center align-items-center mb-2 pb-1 coba">
+												Klik Untuk Melihat 
+											</div>
+
+										</div>
+								</a>
+							</div>
+							
+						</div>
+	
+		
 		<div class="col-sm-6 col-lg-3 mb-4">
 			<div class="card card-border-shadow-warning h-100">
 				<div class="card-body">
@@ -54,7 +64,7 @@
 						<h5 class="ms-1 mb-0">Jumlah Rute</h5>
 					</div>
 					<div class="d-flex justify-content-center">
-						<h2 class="mb-0">6</h2>
+						<h2 class="mb-0"><?= $jml_route ?></h2>
 						<small class="text-muted">Rute</small>
 
 					</div>
@@ -72,7 +82,7 @@
 						<h5 class="ms-1 mb-0">Jarak Tempuh Total</h5>
 					</div>
 					<div class="d-flex justify-content-center">
-						<h2 class="mb-0">454</h2>
+						<h2 class="mb-0"><?= $jarak_total ?></h2>
 						<small class="text-muted">Km</small>
 
 					</div>
@@ -80,24 +90,26 @@
 			</div>
 		</div>
 		<div class="col-sm-6 col-lg-3 mb-4">
-			<div class="card card-border-shadow-info h-100">
-				<div class="card-body">
-					<div class="d-flex align-items-center mb-2 pb-1">
-						<div class="avatar me-2">
-							<span class="avatar-initial rounded bg-label-danger"><i class="bx bx-error"></i></span>
+								<div class="card card-border-shadow-info h-100">
+									<div class="card-body">
+										<div class="d-flex align-items-center mb-2 pb-1">
+											<div class="avatar me-2">
+												<span class="avatar-initial rounded bg-label-danger"><i
+														class="bx bx-error"></i></span>
+											</div>
+											<h5 class="ms-1 mb-0">
+												Lokasi Paling Tercemar</h5>
+										</div>
+										<div class="d-flex justify-content-center " >
+											<h4 style="color:red;" class="mb-1"><?php echo $tercemar['nama_wilayah'] ?></h4>
+										</div>
+										<div class="d-flex justify-content-center " >
+										<h5><?php echo $tercemar['maxpm25'] ?>  µm</h5>
+										</div>
+										
+									</div>
+								</div>
 						</div>
-						<h5 class="ms-1 mb-0">
-							Lokasi Paling Tercemar</h5>
-					</div>
-					<div class="d-flex justify-content-center">
-						<h2 class="mb-0">Rumbai</h2>
-						<small class="text-danger"> Km</small>
-
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 	<!--/ Card Border Shadow -->
 
 

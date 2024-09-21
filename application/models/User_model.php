@@ -12,6 +12,16 @@ class User_model extends CI_Model
 	public function get()
 	{
 		$this->db->from($this->table);
+		$this->db->where('role <>','admin');
+		$this->db->order_by('date_create', 'desc');
+		$query = $this->db->get();
+
+		return $query->result_array();
+	}
+	public function get_unit()
+	{
+		$this->db->from($this->table);
+		$this->db->where('role <>','admin');
 		$this->db->order_by('date_create', 'desc');
 		$query = $this->db->get();
 
@@ -42,21 +52,24 @@ class User_model extends CI_Model
 		return $query->result_array();
 	}
 	function fetch_data($query)
-	{
-		$this->db->select("*");
-		$this->db->from($this->table);
-		if ($query != '') {
-			$this->db->like('email', $query);
-			$this->db->or_like('nama_komunitas', $query);
-			$this->db->or_like('id_alat', $query);
-			$this->db->or_like('password', $query);
+{
+    $this->db->select("*");
+    $this->db->from($this->table);
+    $this->db->where('role !=', 'admin'); // Kondisi role != 'admin'
 
-		}
-		$this->db->order_by('nama_komunitas', 'DESC');
-		return $this->db->get();
+    if ($query != '') {
+        $this->db->group_start(); // Mulai grouping kondisi untuk OR
+        $this->db->like('email', $query);
+        $this->db->or_like('nama_komunitas', $query);
+        $this->db->or_like('id_alat', $query);
+        $this->db->or_like('password', $query);
+        $this->db->group_end(); // Tutup grouping kondisi OR
+    }
 
+    $this->db->order_by('nama_komunitas', 'DESC');
+    return $this->db->get();
+}
 
-	}
 	public function insert($data)
 	{
 		$this->db->insert($this->table, $data);
