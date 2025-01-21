@@ -103,23 +103,52 @@
 						</a>
 					</div>
 
-					<div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-					<a href="<?= base_url('') ?>" class="menu-link menu-toggle">
-                      <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                      <div data-i18n="Dashboard">Dashboard</div>
-                    </a>
-					<div style="margin-left:100px;">
-					<a href="<?= base_url('/C_Rekomendasi_all') ?>" class="menu-link ml-6">
-                          <i class="menu-icon tf-icons bx bx-diamond"></i>
-                          <div data-i18n="Rekomendasi">Rekomendasi</div>
-                        </a>
-						
-					</div>
-						<ul class="navbar-nav flex-row align-items-center ms-auto">
-							<a href="<?= base_url('Auth') ?>"> <button
-									class="btn btn-primary btn-submit">Login</button></a>
-						</ul>
-					</div>
+					<!-- HTML -->
+<div class="navbar-nav-right d-flex align-items-center justify-content-between w-100" id="navbar-collapse">
+  <!-- Menu Link Dashboard -->
+  <a href="<?= base_url('') ?>" class="menu-link menu-toggle d-flex align-items-center">
+    <i class="menu-icon tf-icons bx bx-home-circle"></i>
+    <div data-i18n="Dashboard" class="menu-text">Dashboard</div>
+  </a>
+
+  <!-- Menu Link Rekomendasi -->
+  <a href="<?= base_url('/C_Rekomendasi_all') ?>" class="menu-link d-flex align-items-right ml-6">
+    <i class="menu-icon tf-icons bx bx-diamond"></i>
+    <div data-i18n="Rekomendasi" class="menu-text">Rekomendasi</div>
+  </a>
+
+  <!-- Login Button -->
+  <a href="<?= base_url('Auth') ?>" class="ms-auto">
+    <button class="btn btn-primary btn-submit menu-button">Login</button>
+  </a>
+</div>
+
+<!-- CSS -->
+<style>
+  /* Default style for larger screens */
+  .menu-text {
+    font-size: 1rem; /* Adjust font size as necessary */
+  }
+
+  .menu-button {
+    padding: 0.5rem 1rem; /* Adjust button padding */
+    font-size: 1rem;
+  }
+
+  /* Media query for smartphones (max-width 576px) */
+  @media (max-width: 576px) {
+    .menu-text {
+      font-size: 0.8rem; /* Smaller font size for smaller screens */
+    }
+
+    .menu-button {
+      font-size: 0.8rem; /* Smaller button text */
+      padding: 0.4rem 0.8rem; /* Smaller padding for the button */
+    }
+  }
+</style>
+
+
 
 					<!-- Search Small Screens -->
 					<div class="navbar-search-wrapper search-input-wrapper container-xxl d-none">

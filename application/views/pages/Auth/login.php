@@ -112,7 +112,7 @@
 								<input type="password" id="password" class="form-control" name="password"
 									placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
 									aria-describedby="password" />
-								<?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
+								<?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?> 
 								<span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
 							</div>
 						</div>

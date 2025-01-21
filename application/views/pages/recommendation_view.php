@@ -108,7 +108,7 @@
                       <i class="menu-icon tf-icons bx bx-home-circle"></i>
                       <div data-i18n="Dashboard">Dashboard</div>
                     </a>
-					<div style="margin-left:100px;">
+					<div style="margin-left:20px;">
 					<a href="<?= base_url('/C_Rekomendasi_all') ?>" class="menu-link ml-6">
                           <i class="menu-icon tf-icons bx bx-diamond"></i>
                           <div data-i18n="Rekomendasi">Rekomendasi</div>

@@ -165,7 +165,7 @@ private function haversineDistance($lat1, $lon1, $lat2, $lon2)
 			$last_month = date('Y-m-d H:i:s', strtotime('-1 month'));
 			$this->db->select('*');
 			$this->db->from('datasensor');
-			$this->db->where('datetime >=', $last_month);
+			// $this->db->where('datetime >=', $last_month);
 			$query = $this->db->get();
 			return $query->result_array();  // Kembalikan semua baris hasil
 		}
